@@ -16,14 +16,15 @@ public class SettingsActivity extends AppCompatActivity {
     String currentCurrency;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
+        // Get chosen currency from shared preferences
         preferences = getSharedPreferences("value", MODE_PRIVATE);
-
         currentCurrency = preferences.getString("currency", "aud");
 
+        // Select the radio button which is already 'chosen'
         RadioButton currentRadio;
         switch (currentCurrency) {
             case ("aud"):
@@ -40,46 +41,55 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
 
-
+        // Create the toolbar and add the back button icon
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Settings");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        // When tne back button icon is pressed, save the currency to shared prefs
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainActivity = new Intent(SettingsActivity.this, MainActivity.class);
-
-                RadioGroup radioButtonGroup = findViewById(R.id.currencyGroup);
-
-                int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
-
-
-                String currency = "";
-
-                switch (radioButtonID) {
-                    case (R.id.audButton):
-                        currency = "aud";
-                        break;
-                    case (R.id.usdButton):
-                        currency = "usd";
-                        break;
-                    case (R.id.gbpButton):
-                        currency = "gbp";
-                        break;
-                    default:
-                        currency = "aud";
-                }
-
-                preferences.edit().putString("currency", currency).apply();
-
-                startActivity(mainActivity);
+                saveCurrency();
             }
         });
+    }
 
+    // When tne physical/device button is pressed, save the currency to shared prefs
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        saveCurrency();
     }
 
 
+    public void saveCurrency() {
+        Intent mainActivity = new Intent(SettingsActivity.this, MainActivity.class);
+
+        // Find which radio button is selected and set the currency to be saved to shared prefs
+        RadioGroup radioButtonGroup = findViewById(R.id.currencyGroup);
+        int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+        String currency;
+        switch (radioButtonID) {
+            case (R.id.audButton):
+                currency = "aud";
+                break;
+            case (R.id.usdButton):
+                currency = "usd";
+                break;
+            case (R.id.gbpButton):
+                currency = "gbp";
+                break;
+            default:
+                currency = "aud";
+        }
+
+        preferences.edit().putString("currency", currency).apply();
+        startActivity(mainActivity);
+    }
 }
+
+
+

@@ -28,42 +28,44 @@ public class MainActivity extends AppCompatActivity {
 
     EditText btcInput;
     EditText ethInput;
-
     EditText dollarInput;
-    RetrieveCryptoPrices retrieveCryptoPrices;
-    SharedPreferences preferences;
-    public static String currency;
     ImageView currencyImg;
     TextView currencySymbol;
 
+    RetrieveCryptoPrices retrieveCryptoPrices;
+
+    SharedPreferences preferences;
+
+    // Used for RetrieveCryptoPrices to get the user's currency
+    public static String currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Load preferences and get user's currency
         preferences = getSharedPreferences("value", MODE_PRIVATE);
         currency = preferences.getString("currency", "aud");
 
+        // Create toolbar and set title
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Forward Crypto");
+        toolbar.setTitle("Forward Crypto Converter");
         setSupportActionBar(toolbar);
+
         try {
+            // Run retrieve crypto prices method and set BTC and ETH price
             retrieveCryptoPrices = new RetrieveCryptoPrices();
             retrieveCryptoPrices.execute().get();
             btcPrice = new BigDecimal(retrieveCryptoPrices.getBtcPrice());
             ethPrice = new BigDecimal(retrieveCryptoPrices.getEthPrice());
             retrieveCryptoPrices.cancel(true);
-            System.out.println("CURRENT BTC PRICE: " + btcPrice);
-        } catch (Exception e) {
-            System.out.println("EXCEPTION THROWN: " + e);
+        } catch (Exception ignored) {
         }
 
+        // Set currency symbol and flag icon
         currencyImg = findViewById(R.id.currencyImg);
         currencySymbol = findViewById(R.id.currencySymbol);
-
-
-        // Set currency flag icon
         switch (currency) {
             case ("aud"):
                 currencyImg.setImageResource(R.drawable.aud);
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+        // Set input fields
         dollarInput = findViewById(R.id.dollarInput);
         btcInput = findViewById(R.id.btcInput);
         ethInput = findViewById(R.id.ethInput);
@@ -97,25 +100,24 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable editable) {
+
                 if (!dollarInput.isFocused() && !btcInput.isFocused()) {
 
+                    // Only run if there is a number in the EditText
                     if (!ethInput.getText().toString().equals("")) {
+
+                        // Get cost in dollars for ETH and format it: two decimal places & commas
                         BigDecimal costInDollars = ethPrice.multiply(new BigDecimal(ethInput.getText().toString()));
-
                         BigDecimal dollarNum = new BigDecimal(costInDollars.setScale(2, BigDecimal.ROUND_HALF_EVEN).toString());
-
                         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-
                         String newDollar = decimalFormat.format(dollarNum);
 
-                        System.out.println("NEW DOLLAR NUMMY: " + dollarNum);
-
+                        // Set the dollar input field with the dollar amount
                         dollarInput.setText(newDollar);
 
+                        // Also update BTC amount depending on the amount of ETH entered
                         BigDecimal amountOfBtc = new BigDecimal(dollarInput.getText().toString().replaceAll(",", "")).divide(btcPrice, 8, BigDecimal.ROUND_HALF_EVEN);
-
                         btcInput.setText(amountOfBtc.toString());
-
 
                     } else {
                         dollarInput.setText("");
@@ -143,21 +145,20 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!dollarInput.isFocused() && !ethInput.isFocused()) {
 
+                    // Only run if there is a number in the EditText
                     if (!btcInput.getText().toString().equals("")) {
+
+                        // Get cost in dollars for ETH and format it: two decimal places & commas
                         BigDecimal costInDollars = btcPrice.multiply(new BigDecimal(btcInput.getText().toString()));
-
                         BigDecimal dollarNum = new BigDecimal(costInDollars.setScale(2, BigDecimal.ROUND_HALF_EVEN).toString());
-
                         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-
                         String newDollar = decimalFormat.format(dollarNum);
 
-                        System.out.println("NEW DOLLAR NUM: " + dollarNum);
-
+                        // Set the dollar input field with the dollar amount
                         dollarInput.setText(newDollar);
 
+                        // Also update ETH amount depending on the amount of BTC entered
                         BigDecimal amountOfEth = new BigDecimal(newDollar.replaceAll(",", "")).divide(ethPrice, 8, BigDecimal.ROUND_HALF_EVEN);
-
                         ethInput.setText(amountOfEth.toString());
 
                     } else {
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                
+
 
             }
 
@@ -187,15 +188,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!btcInput.isFocused() && !ethInput.isFocused()) {
 
-                    System.out.println("IMPORTANT DOLLAR OUTPUT: " + dollarInput.getText().toString());
-
+                    // Only run if there is a number in the EditText
                     if (!dollarInput.getText().toString().replaceAll(",", "").equals("")) {
 
+                        // Get amount of BTC & ETH depending on dollars entered and format it: eight decimal places
                         BigDecimal amountOfBtc = new BigDecimal(dollarInput.getText().toString().replaceAll(",", "")).divide(btcPrice, 8, BigDecimal.ROUND_HALF_EVEN);
                         BigDecimal amountOfEth = new BigDecimal(dollarInput.getText().toString().replaceAll(",", "")).divide(ethPrice, 8, BigDecimal.ROUND_HALF_EVEN);
                         btcInput.setText(amountOfBtc.toString());
                         ethInput.setText(amountOfEth.toString());
-
 
                     } else {
                         btcInput.setText("");
@@ -209,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Used to create the dropdown menu
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -218,19 +220,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.toolbar_settings:
+                // Go to settings activity
                 Intent settingsActivity = new Intent(this, SettingsActivity.class);
                 startActivity(settingsActivity);
                 break;
             case R.id.toolbar_refresh:
                 try {
+                    // Re-fetch crypto prices
+                    retrieveCryptoPrices = new RetrieveCryptoPrices();
                     retrieveCryptoPrices.execute().get();
                     btcPrice = new BigDecimal(retrieveCryptoPrices.getBtcPrice());
-                } catch (Exception ignored) {
-                    System.out.println("DARDY: " + ignored);
-                }
-                System.out.println(btcPrice);
-                try {
-                    btcPrice = new BigDecimal(retrieveCryptoPrices.getBtcPrice());
+                    ethPrice = new BigDecimal(retrieveCryptoPrices.getEthPrice());
                 } catch (Exception ignored) {
                 }
                 Toast.makeText(getApplicationContext(), "Refreshed", Toast.LENGTH_SHORT).show();

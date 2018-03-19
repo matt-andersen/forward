@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
@@ -22,7 +22,8 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="0.2"
-            app:srcCompat="@android:drawable/ic_menu_report_image" />
+            app:srcCompat="@android:drawable/ic_menu_report_image"
+            android:contentDescription="@string/desc_currency_icon" />
 
         <TextView
             android:id="@+id/currencySymbol"
@@ -36,21 +37,22 @@
             android:id="@+id/dollarInput"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_weight="0.7"
             android:ems="10"
             android:fitsSystemWindows="true"
             android:gravity="center"
             android:inputType="number"
             android:textColorLink="@android:color/darker_gray"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="LabelFor" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
@@ -59,16 +61,17 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="0.2"
-            app:srcCompat="@drawable/btc" />
+            app:srcCompat="@drawable/btc"
+            android:contentDescription="@string/bitcoin_logo" />
 
         <TextView
             android:id="@+id/bitcoinSymbol"
             android:layout_width="2dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:text="฿"
+            android:text="@string/btcSymbol"
             android:textAlignment="textEnd"
             android:textSize="18sp" />
 
@@ -76,21 +79,22 @@
             android:id="@+id/btcInput"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_weight="0.7"
             android:ems="10"
             android:fitsSystemWindows="true"
             android:gravity="center"
             android:inputType="number"
             android:textColorLink="@android:color/darker_gray"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="LabelFor" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
@@ -99,16 +103,17 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="0.2"
-            app:srcCompat="@drawable/eth" />
+            app:srcCompat="@drawable/eth"
+            android:contentDescription="@string/ethereum_logo" />
 
         <TextView
             android:id="@+id/ethereumSymbol"
             android:layout_width="2dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:text="Ξ"
+            android:text="@string/ethereum_symbol"
             android:textAlignment="textEnd"
             android:textSize="18sp" />
 
@@ -116,14 +121,15 @@
             android:id="@+id/ethInput"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_weight="0.7"
             android:ems="10"
             android:fitsSystemWindows="true"
             android:gravity="center"
             android:inputType="number"
             android:textColorLink="@android:color/darker_gray"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="LabelFor" />
 
     </LinearLayout>
 

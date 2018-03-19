@@ -1763,7 +1763,7 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
-    </string-array><string-array name="multi_select_list_preference_default_value"/><string name="pref_title_system_sync_settings">System sync settings</string><string name="pref_header_notifications">Notifications</string><string name="pref_title_new_message_notifications">New message notifications</string><string name="pref_title_ringtone">Ringtone</string><string name="pref_ringtone_silent">Silent</string><string name="pref_title_vibrate">Vibrate</string></file><file path="C:\Users\Andersen\Desktop\CryptoConverter\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </string-array><string-array name="multi_select_list_preference_default_value"/><string name="pref_title_system_sync_settings">System sync settings</string><string name="pref_header_notifications">Notifications</string><string name="pref_title_new_message_notifications">New message notifications</string><string name="pref_title_ringtone">Ringtone</string><string name="pref_ringtone_silent">Silent</string><string name="pref_title_vibrate">Vibrate</string><string name="btcSymbol">฿</string><string name="ethereum_logo">Ethereum logo</string><string name="bitcoin_logo">Bitcoin logo</string><string name="ethereum_symbol">Ξ</string><string name="desc_currency_icon">Currency icon</string></file><file path="C:\Users\Andersen\Desktop\CryptoConverter\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
