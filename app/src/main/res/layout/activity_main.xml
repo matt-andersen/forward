@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cryptoconverter.com.MainActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="0.2"
+            app:srcCompat="@drawable/aud" />
+
+        <TextView
+            android:id="@+id/currencySymbol"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="$"
+            android:textAlignment="textEnd"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/dollarInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_weight="0.7"
+            android:ems="10"
+            android:fitsSystemWindows="true"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColorLink="@android:color/darker_gray"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="0.2"
+            app:srcCompat="@drawable/btc" />
+
+        <TextView
+            android:id="@+id/bitcoinSymbol"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="₿"
+            android:textAlignment="textEnd"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/btcInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_weight="0.7"
+            android:ems="10"
+            android:fitsSystemWindows="true"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColorLink="@android:color/darker_gray"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_weight="0.3"-->
+            <!--app:srcCompat="@drawable/eth" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/ethInput"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_weight="0.7"-->
+            <!--android:ems="10"-->
+            <!--android:fitsSystemWindows="true"-->
+            <!--android:gravity="center"-->
+            <!--android:inputType="number"-->
+            <!--android:textColorLink="@android:color/darker_gray"-->
+            <!--android:textSize="18sp" />-->
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>
