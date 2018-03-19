@@ -68,7 +68,7 @@
             android:layout_width="2dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:text="₿"
+            android:text="฿"
             android:textAlignment="textEnd"
             android:textSize="18sp" />
 

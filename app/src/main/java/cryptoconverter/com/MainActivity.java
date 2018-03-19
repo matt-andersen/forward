@@ -1,5 +1,6 @@
 package cryptoconverter.com;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         currency = preferences.getString("currency", "aud");
 
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Forward Crypto");
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Crypto Converter");
         try {
             retrieveCryptoPrices = new RetrieveCryptoPrices();
             retrieveCryptoPrices.execute().get();
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable editable) {
                 if (!dollarInput.isFocused() && !btcInput.isFocused()) {
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable editable) {
 
@@ -174,9 +177,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable editable) {
 
@@ -228,8 +233,7 @@ public class MainActivity extends AppCompatActivity {
                     btcPrice = new BigDecimal(retrieveCryptoPrices.getBtcPrice());
                 } catch (Exception ignored) {
                 }
-                System.out.println(btcPrice);
-                Toast.makeText(getApplicationContext(), "Refresh", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Refreshed", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
