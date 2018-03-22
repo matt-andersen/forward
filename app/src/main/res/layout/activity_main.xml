@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/mainActivity"
+    android:background="@color/background"
     tools:context="cryptoconverter.com.MainActivity">
 
     <include layout="@layout/toolbar_layout" />
@@ -42,7 +44,7 @@
             android:ems="10"
             android:fitsSystemWindows="true"
             android:gravity="center"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColorLink="@android:color/darker_gray"
             android:textSize="18sp"
             tools:ignore="LabelFor" />
@@ -84,7 +86,7 @@
             android:ems="10"
             android:fitsSystemWindows="true"
             android:gravity="center"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColorLink="@android:color/darker_gray"
             android:textSize="18sp"
             tools:ignore="LabelFor" />
@@ -126,7 +128,7 @@
             android:ems="10"
             android:fitsSystemWindows="true"
             android:gravity="center"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColorLink="@android:color/darker_gray"
             android:textSize="18sp"
             tools:ignore="LabelFor" />

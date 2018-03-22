@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/settingsActivity"
+    android:background="@color/background"
     tools:context="cryptoconverter.com.SettingsActivity">
 
     <include layout="@layout/toolbar_layout" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="210dp"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="30dp"
-            android:text="Choose Currency"
+            android:text="@string/choose_currency"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="76dp"
@@ -41,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:buttonTint="@android:color/darker_gray"
-                android:text="Australian dollar"
+                android:text="@string/australian_dollar"
                 android:textColor="#767676"
                 android:textSize="12sp" />
 
@@ -50,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:buttonTint="@android:color/darker_gray"
-                android:text="United States dollar"
+                android:text="@string/united_states_dollar"
                 android:textColor="#767676"
                 android:textSize="12sp" />
 
@@ -59,7 +60,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:buttonTint="@android:color/darker_gray"
-                android:text="Great British pound sterling"
+                android:text="@string/great_british_pound_sterling"
+                android:textColor="#767676"
+                android:textSize="12sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/themeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="30dp"
+            android:text="@string/choose_theme"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="76dp"
+            tools:layout_editor_absoluteY="56dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <RadioGroup
+            android:id="@+id/themeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/lightButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:buttonTint="@android:color/darker_gray"
+                android:text="@string/light_theme"
+                android:textColor="#767676"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/darkButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:buttonTint="@android:color/darker_gray"
+                android:text="@string/dark_theme"
                 android:textColor="#767676"
                 android:textSize="12sp" />
 

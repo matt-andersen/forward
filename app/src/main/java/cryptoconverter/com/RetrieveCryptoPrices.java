@@ -15,30 +15,47 @@ public class RetrieveCryptoPrices extends AsyncTask<String, Void, String> {
     // Create global vars for crypto prices and get the chosen federal currency from shared prefs in Main
     private String btcPrice = "";
     private String ethPrice = "";
-    private String currency = MainActivity.currency;
 
     @Override
     protected String doInBackground(String[] params) {
 
+        String currency = MainActivity.currency;
+
         try {
             // Retrieve crypto price and set
-            setBtcPrice(retrieveCryptoPrice("btc"));
-            setEthPrice(retrieveCryptoPrice("eth"));
+            setBtcPrice(retrieveCryptoPrice("btc", currency));
+            setEthPrice(retrieveCryptoPrice("eth", currency));
 
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+
+            switch (currency) {
+                case("aud"):
+                    setBtcPrice("11913.28");
+                    setEthPrice("759.72");
+                    break;
+                case("usd"):
+                    setBtcPrice("9077.29");
+                    setEthPrice("574.54");
+                    break;
+                case("gbp"):
+                    setBtcPrice("6623.59");
+                    setEthPrice("425.87");
+                    break;
+            }
+
         }
         return null;
     }
 
-    private void setBtcPrice(String btcPrice) {
+    void setBtcPrice(String btcPrice) {
         this.btcPrice = btcPrice;
     }
 
-    double getBtcPrice() {
-        return Double.parseDouble(btcPrice);
+    String getBtcPrice() {
+        return btcPrice;
     }
 
-    private void setEthPrice(String ethPrice) {
+    void setEthPrice(String ethPrice) {
         this.ethPrice = ethPrice;
     }
 
@@ -46,7 +63,7 @@ public class RetrieveCryptoPrices extends AsyncTask<String, Void, String> {
         return ethPrice;
     }
 
-    private String retrieveCryptoPrice(String crypto) throws Exception{
+    String retrieveCryptoPrice(String crypto, String currency) throws Exception{
 
         // Set the URL for API call using the crypto parameter
         String url = "https://api.cryptonator.com/api/ticker/" + crypto + "-" + currency;

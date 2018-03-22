@@ -81,4 +81,11 @@
     <string name="btcSymbol">฿</string>
     <string name="ethereum_logo">Ethereum logo</string>
     <string name="ethereum_symbol">Ξ</string>
+    <string name="choose_currency">Choose Currency</string>
+    <string name="australian_dollar">Australian dollar</string>
+    <string name="united_states_dollar">United States dollar</string>
+    <string name="great_british_pound_sterling">Great British pound sterling</string>
+    <string name="choose_theme">Choose Theme</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
 </resources>

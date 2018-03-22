@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Mar 19 22:44:57 AEST 2018
+#Wed Mar 21 21:08:55 AEST 2018
 2.base=C\:\\Users\\Andersen\\Desktop\\CryptoConverter\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
 5.set=DEX
 0.path=classes.dex

@@ -1,4 +1,4 @@
-#Mon Mar 19 22:04:52 AEST 2018
+#Wed Mar 21 20:32:31 AEST 2018
 base.0=C\:\\Users\\Andersen\\Desktop\\CryptoConverter\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
 path.0=classes.dex
 renamed.0=classes.dex
